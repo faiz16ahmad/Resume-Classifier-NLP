@@ -1,0 +1,109 @@
+================================================================================
+RESUME CLASSIFICATION MODEL PERFORMANCE REPORT
+================================================================================
+Generated: 2025-09-14 15:05:07
+Models Evaluated: 6
+
+PERFORMANCE SUMMARY
+----------------------------------------
+Model                Accuracy   F1-Score   Precision  Recall    
+knn                  0.5573     0.5522     0.5763     0.5573    
+logistic_regression  0.6499     0.6269     0.6767     0.6499    
+random_forest        0.7626     0.7465     0.7716     0.7626    
+svm                  0.6358     0.6276     0.6579     0.6358    
+naive_bayes          0.5433     0.5003     0.5803     0.5433    
+ovr_logistic_regression 0.6499     0.6269     0.6767     0.6499    
+
+BEST MODEL DETAILS
+----------------------------------------
+
+Model: random_forest
+Accuracy: 0.7626
+Precision: 0.7716
+Recall: 0.7626
+F1-Score: 0.7465
+Cross-Val Mean: 0.7301 ± 0.0135
+Training Time: 8.317s
+Prediction Time: 0.084s
+ROC-AUC: 0.9749
+
+
+DETAILED RESULTS
+----------------------------------------
+
+KNN:
+
+Model: knn
+Accuracy: 0.5573
+Precision: 0.5763
+Recall: 0.5573
+F1-Score: 0.5522
+Cross-Val Mean: 0.5373 ± 0.0262
+Training Time: 0.033s
+Prediction Time: 2.618s
+ROC-AUC: 0.8440
+
+
+LOGISTIC_REGRESSION:
+
+Model: logistic_regression
+Accuracy: 0.6499
+Precision: 0.6767
+Recall: 0.6499
+F1-Score: 0.6269
+Cross-Val Mean: 0.6284 ± 0.0141
+Training Time: 1.709s
+Prediction Time: 0.014s
+ROC-AUC: 0.9646
+
+
+RANDOM_FOREST:
+
+Model: random_forest
+Accuracy: 0.7626
+Precision: 0.7716
+Recall: 0.7626
+F1-Score: 0.7465
+Cross-Val Mean: 0.7301 ± 0.0135
+Training Time: 8.317s
+Prediction Time: 0.084s
+ROC-AUC: 0.9749
+
+
+SVM:
+
+Model: svm
+Accuracy: 0.6358
+Precision: 0.6579
+Recall: 0.6358
+F1-Score: 0.6276
+Cross-Val Mean: 0.6158 ± 0.0195
+Training Time: 95.314s
+Prediction Time: 3.220s
+ROC-AUC: 0.9528
+
+
+NAIVE_BAYES:
+
+Model: naive_bayes
+Accuracy: 0.5433
+Precision: 0.5803
+Recall: 0.5433
+F1-Score: 0.5003
+Cross-Val Mean: 0.5478 ± 0.0212
+Training Time: 0.086s
+Prediction Time: 0.015s
+ROC-AUC: 0.9336
+
+
+OVR_LOGISTIC_REGRESSION:
+
+Model: ovr_logistic_regression
+Accuracy: 0.6499
+Precision: 0.6767
+Recall: 0.6499
+F1-Score: 0.6269
+Cross-Val Mean: 0.6284 ± 0.0141
+Training Time: 4.687s
+Prediction Time: 0.238s
+ROC-AUC: 0.9646
