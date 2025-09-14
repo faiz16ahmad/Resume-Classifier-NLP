@@ -30,33 +30,32 @@ BEST_MODEL_PATH = MODELS_DIR / "best_model.pkl"
 CATEGORY_MAPPING_PATH = MODELS_DIR / "category_mapping.pkl"
 MODEL_PERFORMANCE_PATH = MODELS_DIR / "model_performance.json"
 
-# Job category mappings (25 categories as specified)
+# Job category mappings (24 categories from Resume1 dataset)
 CATEGORY_MAPPING: Dict[int, str] = {
-    0: "Data Scientist",
-    1: "Java Developer", 
-    2: "Python Developer",
-    3: "Web Developer",
-    4: "Business Analyst",
-    5: "HR",
-    6: "DevOps Engineer",
-    7: "Software Engineer",
-    8: "Testing",
-    9: "Network Security Engineer",
-    10: "SAP Developer",
-    11: "Hardware",
-    12: "Automation Testing",
-    13: "Electrical Engineering",
-    14: "Operations Manager",
-    15: "PMO",
-    16: "Database",
-    17: "Hadoop",
-    18: "ETL Developer",
-    19: "DotNet Developer",
-    20: "Blockchain",
-    21: "Sales",
-    22: "Mechanical Engineer",
-    23: "Civil Engineer",
-    24: "Arts"
+    0: "ACCOUNTANT",
+    1: "ADVOCATE",
+    2: "AGRICULTURE",
+    3: "APPAREL",
+    4: "ARTS",
+    5: "AUTOMOBILE",
+    6: "AVIATION",
+    7: "BANKING",
+    8: "BPO",
+    9: "BUSINESS-DEVELOPMENT",
+    10: "CHEF",
+    11: "CONSTRUCTION",
+    12: "CONSULTANT",
+    13: "DESIGNER",
+    14: "DIGITAL-MEDIA",
+    15: "ENGINEERING",
+    16: "FINANCE",
+    17: "FITNESS",
+    18: "HEALTHCARE",
+    19: "HR",
+    20: "INFORMATION-TECHNOLOGY",
+    21: "PUBLIC-RELATIONS",
+    22: "SALES",
+    23: "TEACHER"
 }
 
 # Reverse mapping for label encoding
@@ -228,8 +227,8 @@ def validate_config() -> bool:
         ensure_directories_exist()
         
         # Validate category mapping
-        if len(CATEGORY_MAPPING) != 25:
-            raise ValueError(f"Expected 25 categories, got {len(CATEGORY_MAPPING)}")
+        if len(CATEGORY_MAPPING) != 24:
+            raise ValueError(f"Expected 24 categories, got {len(CATEGORY_MAPPING)}")
         
         # Validate TF-IDF configuration
         if TFIDF_CONFIG["max_features"] <= 0:

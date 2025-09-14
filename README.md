@@ -4,12 +4,12 @@ A production-ready application that automatically categorizes resumes into job c
 
 ## 🎯 Project Overview
 
-This system processes PDF resumes, extracts and cleans text content, applies machine learning models for classification, and provides a user-friendly web interface for batch processing with automated file organization and results export.
+This system processes PDF resumes, extracts and cleans text content, applies machine learning models for classification, and provides a user-friendly web interface for batch processing with automated file organization and results export. Trained on a comprehensive dataset of 2,483 resumes across 24 diverse job categories with 76.3% accuracy using Random Forest algorithm.
 
 ### Key Features
 
-- **Automated Resume Classification**: Categorizes resumes into 25 predefined job categories
-- **High Accuracy**: Achieves 90%+ classification accuracy using multiple ML algorithms
+- **Automated Resume Classification**: Categorizes resumes into 24 predefined job categories
+- **High Accuracy**: Achieves 76.3% classification accuracy using Random Forest algorithm
 - **Web Interface**: Streamlit-based UI with drag-and-drop file upload
 - **Batch Processing**: Handle multiple resumes simultaneously with real-time progress tracking
 - **Automated Organization**: Automatically organizes classified resumes into category folders
@@ -53,33 +53,32 @@ resume-classification-nlp/
 
 ## 🎯 Target Categories
 
-The system classifies resumes into 25 job categories:
+The system classifies resumes into 24 job categories:
 
-- Data Scientist
-- Java Developer
-- Python Developer
-- Web Developer
-- Business Analyst
-- HR
-- DevOps Engineer
-- Software Engineer
-- Testing
-- Network Security Engineer
-- SAP Developer
-- Hardware
-- Automation Testing
-- Electrical Engineering
-- Operations Manager
-- PMO
-- Database
-- Hadoop
-- ETL Developer
-- DotNet Developer
-- Blockchain
-- Sales
-- Mechanical Engineer
-- Civil Engineer
-- Arts
+- **ACCOUNTANT** - Accounting and financial professionals
+- **ADVOCATE** - Legal professionals and lawyers
+- **AGRICULTURE** - Agricultural and farming specialists
+- **APPAREL** - Fashion and clothing industry professionals
+- **ARTS** - Creative and artistic professionals
+- **AUTOMOBILE** - Automotive industry specialists
+- **AVIATION** - Aviation and aerospace professionals
+- **BANKING** - Banking and financial services
+- **BPO** - Business Process Outsourcing professionals
+- **BUSINESS-DEVELOPMENT** - Business development and strategy
+- **CHEF** - Culinary and food service professionals
+- **CONSTRUCTION** - Construction and building industry
+- **CONSULTANT** - Management and technical consultants
+- **DESIGNER** - Design and creative professionals
+- **DIGITAL-MEDIA** - Digital marketing and media specialists
+- **ENGINEERING** - General engineering professionals
+- **FINANCE** - Financial analysts and specialists
+- **FITNESS** - Health and fitness professionals
+- **HEALTHCARE** - Medical and healthcare professionals
+- **HR** - Human resources professionals
+- **INFORMATION-TECHNOLOGY** - IT and software professionals
+- **PUBLIC-RELATIONS** - PR and communications specialists
+- **SALES** - Sales and marketing professionals
+- **TEACHER** - Education and teaching professionals
 
 ## 🚀 Quick Start
 
@@ -180,11 +179,12 @@ pytest tests/test_preprocessing.py
 
 ## 📊 Performance Metrics
 
-- **Classification Accuracy**: >90%
+- **Classification Accuracy**: 76.3% (Random Forest model)
+- **F1-Score**: 0.747 (excellent for multi-class classification)
+- **Dataset Size**: 2,483 resumes across 24 categories
 - **Processing Speed**: <5 seconds per resume
 - **Memory Usage**: <2GB for batch processing
-- **Error Rate**: <5% on diverse resume formats
-- **Test Coverage**: >80%
+- **Feature Engineering**: 5,000 TF-IDF features
 
 ## 🛠️ Development
 

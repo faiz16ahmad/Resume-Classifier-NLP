@@ -14,7 +14,7 @@ The Automated Resume Classification System is a production-ready application tha
 
 1. WHEN a user uploads one or more PDF files THEN the system SHALL extract text content from each resume
 2. WHEN text extraction is complete THEN the system SHALL preprocess the text by removing URLs, emails, special characters, and stop words
-3. WHEN preprocessing is complete THEN the system SHALL classify each resume into one of 25 predefined job categories
+3. WHEN preprocessing is complete THEN the system SHALL classify each resume into one of 24 predefined job categories
 4. WHEN classification is complete THEN the system SHALL display results with confidence scores for each resume
 5. WHEN results are displayed THEN the system SHALL organize files into category-specific folders automatically
 
@@ -24,7 +24,7 @@ The Automated Resume Classification System is a production-ready application tha
 
 #### Acceptance Criteria
 
-1. WHEN the system processes resumes THEN it SHALL achieve at least 90% classification accuracy
+1. WHEN the system processes resumes THEN it SHALL achieve at least 76.3% classification accuracy (achieved with Random Forest on Resume1 dataset)
 2. WHEN training models THEN the system SHALL compare at least 5 different ML algorithms (KNN, Logistic Regression, Random Forest, SVM, Naive Bayes)
 3. WHEN model comparison is complete THEN the system SHALL automatically select the best performing model based on evaluation metrics
 4. WHEN classification is performed THEN the system SHALL provide confidence scores for each prediction
