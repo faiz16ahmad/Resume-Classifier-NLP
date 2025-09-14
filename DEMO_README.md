@@ -9,21 +9,24 @@ A **single-file Streamlit application** that demonstrates AI-powered resume clas
 - **76.3% Accuracy**: Trained Random Forest model
 - **Real-time Processing**: Instant classification results
 - **Interactive UI**: Clean Streamlit interface
-- **Text & File Input**: Paste text or upload .txt files
+- **Text & File Input**: Paste text or upload .txt/.pdf files
 
 ## 🚀 Quick Start
 
 ### 1. Install Dependencies
+
 ```bash
 pip install -r minimal_requirements.txt
 ```
 
 ### 2. Run the Demo
+
 ```bash
 streamlit run minimal_app.py
 ```
 
 ### 3. Open Browser
+
 The app will automatically open at `http://localhost:8501`
 
 ## 📊 Model Details
@@ -64,22 +67,25 @@ The app will automatically open at `http://localhost:8501`
 ## 💡 Usage Tips
 
 ### For Best Results:
+
 - Include **skills, experience, education**
 - Use **complete sentences** and **professional language**
 - Provide **detailed job descriptions** and **responsibilities**
 - Include **industry-specific keywords**
 
 ### Sample Input:
+
 ```
-Experienced software engineer with 5 years in Python development. 
-Skilled in Django, Flask, machine learning, and data analysis. 
-Built web applications and implemented ML algorithms. 
+Experienced software engineer with 5 years in Python development.
+Skilled in Django, Flask, machine learning, and data analysis.
+Built web applications and implemented ML algorithms.
 Bachelor's degree in Computer Science.
 ```
 
 ## 🔧 Technical Implementation
 
 The app demonstrates:
+
 - **Text Preprocessing**: URL/email removal, contraction expansion, stop word filtering
 - **Feature Engineering**: TF-IDF vectorization with 5,000 features
 - **Classification**: Random Forest with probability scores
@@ -102,7 +108,7 @@ models/                     # Pre-trained models (required)
 
 - **Interactive UI**: Clean, professional interface
 - **Real-time Results**: Instant classification with confidence scores
-- **Multiple Input Methods**: Text area or file upload
+- **Multiple Input Methods**: Text area or PDF/text file upload
 - **Detailed Analytics**: Processing statistics and text preview
 - **Confidence Indicators**: Visual feedback on prediction quality
 - **Category Browser**: Sidebar with all supported categories
@@ -120,4 +126,5 @@ models/                     # Pre-trained models (required)
 This minimal app packs the full power of the resume classification system into a single, easy-to-run file. Perfect for showcasing your NLP and ML capabilities in any setting!
 
 ---
-*Built with ❤️ using Streamlit, scikit-learn, and NLTK*
+
+_Built with ❤️ using Streamlit, scikit-learn, and NLTK_

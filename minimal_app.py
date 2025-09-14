@@ -16,6 +16,14 @@ import string
 from pathlib import Path
 from typing import Dict, Optional
 import pandas as pd
+import io
+
+# PDF processing imports
+try:
+    import PyPDF2
+    PDF_SUPPORT = True
+except ImportError:
+    PDF_SUPPORT = False
 
 # NLTK imports with error handling
 try:
@@ -39,6 +47,36 @@ try:
 except ImportError:
     st.error("NLTK not installed. Please run: pip install nltk")
     st.stop()
+
+def extract_text_from_pdf(pdf_file) -> str:
+    """
+    Extract text from uploaded PDF file.
+    
+    Args:
+        pdf_file: Streamlit uploaded file object
+        
+    Returns:
+        Extracted text string
+    """
+    if not PDF_SUPPORT:
+        st.error("PDF support not available. Please install PyPDF2: pip install PyPDF2")
+        return ""
+    
+    try:
+        # Create a PDF reader object
+        pdf_reader = PyPDF2.PdfReader(io.BytesIO(pdf_file.read()))
+        
+        # Extract text from all pages
+        text = ""
+        for page_num in range(len(pdf_reader.pages)):
+            page = pdf_reader.pages[page_num]
+            text += page.extract_text() + "\n"
+        
+        return text.strip()
+        
+    except Exception as e:
+        st.error(f"Error reading PDF: {e}")
+        return ""
 
 # Configure Streamlit page
 st.set_page_config(
@@ -171,7 +209,13 @@ def load_models():
             st.error("TF-IDF vectorizer not found.")
             return None, None, None, None
         
-        vectorizer = joblib.load(vectorizer_path)
+        vectorizer_data = joblib.load(vectorizer_path)
+        
+        # Handle different vectorizer formats
+        if isinstance(vectorizer_data, dict):
+            vectorizer = vectorizer_data.get('vectorizer')
+        else:
+            vectorizer = vectorizer_data
         
         # Load label encoder
         label_encoder_path = models_dir / "label_encoder.pkl"
@@ -244,6 +288,8 @@ def main():
     
     This demo showcases an NLP system that automatically classifies resumes into 24 job categories 
     using Random Forest and TF-IDF features. Trained on 2,483 resumes with 76.3% accuracy.
+    
+    📄 **Supports both PDF and text files!**
     """)
     
     # Load models
@@ -296,16 +342,38 @@ def main():
     else:  # Upload File
         uploaded_file = st.file_uploader(
             "Upload resume file:",
-            type=['txt'],
-            help="Currently supports .txt files only"
+            type=['txt', 'pdf'],
+            help="Supports .txt and .pdf files"
         )
         
         if uploaded_file is not None:
             try:
-                resume_text = str(uploaded_file.read(), "utf-8")
-                st.success(f"File '{uploaded_file.name}' loaded successfully!")
-                with st.expander("Preview uploaded content"):
-                    st.text(resume_text[:500] + "..." if len(resume_text) > 500 else resume_text)
+                file_extension = uploaded_file.name.lower().split('.')[-1]
+                
+                if file_extension == 'pdf':
+                    if not PDF_SUPPORT:
+                        st.error("PDF support not available. Please install PyPDF2: pip install PyPDF2")
+                        st.info("Run: pip install PyPDF2")
+                    else:
+                        with st.spinner("Extracting text from PDF..."):
+                            resume_text = extract_text_from_pdf(uploaded_file)
+                        
+                        if resume_text:
+                            st.success(f"PDF '{uploaded_file.name}' processed successfully!")
+                            with st.expander("Preview extracted content"):
+                                st.text(resume_text[:500] + "..." if len(resume_text) > 500 else resume_text)
+                        else:
+                            st.error("Could not extract text from PDF. Please try a different file.")
+                
+                elif file_extension == 'txt':
+                    resume_text = str(uploaded_file.read(), "utf-8")
+                    st.success(f"Text file '{uploaded_file.name}' loaded successfully!")
+                    with st.expander("Preview uploaded content"):
+                        st.text(resume_text[:500] + "..." if len(resume_text) > 500 else resume_text)
+                
+                else:
+                    st.error("Unsupported file type. Please upload a .txt or .pdf file.")
+                    
             except Exception as e:
                 st.error(f"Error reading file: {e}")
     
