@@ -1,54 +1,36 @@
-# Resume Classification NLP System
+# 🎯 Resume Classification Demo
 
-A production-ready application that automatically categorizes resumes into job categories using Natural Language Processing and Machine Learning techniques.
+A **single-file Streamlit application** that demonstrates AI-powered resume classification. Perfect for interviews, demos, and quick showcases!
 
 ## 🎯 Project Overview
 
-This system processes PDF resumes, extracts and cleans text content, applies machine learning models for classification, and provides a user-friendly web interface for batch processing with automated file organization and results export. Trained on a comprehensive dataset of 2,483 resumes across 24 diverse job categories with 76.3% accuracy using Random Forest algorithm.
+This minimal application processes PDF and text resumes, extracts and cleans content, and classifies them into 24 job categories using a trained Random Forest model. Built as a standalone demo with 76.3% accuracy on 2,483 resumes.
 
-### Key Features
+### ✨ Key Features
 
-- **Automated Resume Classification**: Categorizes resumes into 24 predefined job categories
-- **High Accuracy**: Achieves 76.3% classification accuracy using Random Forest algorithm
-- **Web Interface**: Streamlit-based UI with drag-and-drop file upload
-- **Batch Processing**: Handle multiple resumes simultaneously with real-time progress tracking
-- **Automated Organization**: Automatically organizes classified resumes into category folders
-- **Export Functionality**: Export results to CSV format with confidence scores
-- **Comprehensive Testing**: Unit and integration tests with >80% code coverage
+- **Single File Application**: Everything in one `minimal_app.py` file
+- **PDF & Text Support**: Upload PDF resumes or paste text directly
+- **24 Job Categories**: Classifies into 24 professional categories
+- **76.3% Accuracy**: Trained Random Forest model
+- **Real-time Processing**: Instant classification results
+- **Interactive UI**: Clean Streamlit interface with confidence scores
+- **Easy Setup**: Just 6 dependencies, runs anywhere
 
-## 🏗️ Project Structure
+## 📁 Project Structure
 
 ```
-resume-classification-nlp/
+resume-classification-demo/
+├── minimal_app.py              # Complete standalone application
+├── requirements.txt            # Dependencies (only 6!)
+├── README.md                   # This file
 ├── data/
-│   ├── raw/                    # Original datasets
-│   ├── processed/              # Cleaned data
-│   └── test_resumes/           # Sample PDFs
-├── models/
-│   ├── tfidf_vectorizer.pkl    # Trained vectorizer
-│   ├── best_model.pkl          # Best performing model
-│   └── category_mapping.pkl    # Label mappings
-├── src/
-│   ├── data_preprocessing.py   # Text cleaning functions
-│   ├── feature_engineering.py # TF-IDF implementation
-│   ├── model_training.py       # ML pipeline
-│   ├── web_app.py             # Streamlit interface
-│   ├── utils.py               # Helper functions
-│   └── logger_setup.py        # Logging configuration
-├── notebooks/
-│   ├── exploratory_analysis.ipynb
-│   ├── model_development.ipynb
-│   └── performance_evaluation.ipynb
-├── tests/
-│   ├── test_preprocessing.py
-│   ├── test_models.py
-│   └── test_web_app.py
-├── categorized_resumes/        # Output directory
-├── logs/                       # Application logs
-├── requirements.txt
-├── config.py                   # Configuration settings
-├── README.md
-└── .gitignore
+│   └── raw/
+│       └── Resume1.csv         # Training dataset (2,483 resumes)
+└── models/                     # Pre-trained models
+    ├── best_model.pkl         # Random Forest classifier
+    ├── tfidf_vectorizer.pkl   # TF-IDF vectorizer
+    ├── label_encoder.pkl      # Label encoder
+    └── category_mapping.pkl   # Category mappings
 ```
 
 ## 🎯 Target Categories
@@ -83,84 +65,58 @@ The system classifies resumes into 24 job categories:
 ## 🚀 Quick Start
 
 ### Prerequisites
-
 - Python 3.8 or higher
 - pip package manager
 
 ### Installation
 
-1. Clone the repository:
-
+1. **Clone the repository:**
 ```bash
-git clone <repository-url>
-cd resume-classification-nlp
+git clone https://github.com/faiz16ahmad/Resume-Classifier-NLP.git
+cd Resume-Classifier-NLP
 ```
 
-2. Create a virtual environment:
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies:
-
+2. **Install dependencies:**
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Download NLTK data:
-
-```python
-import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-```
-
-5. Initialize the project structure:
-
+3. **Run the application:**
 ```bash
-python config.py
+streamlit run minimal_app.py
 ```
 
-### Running the Application
+4. **Open your browser:**
+The app will automatically open at `http://localhost:8501`
 
-#### Option 1: Using the startup script (Recommended)
+**That's it! No complex setup, no configuration files, no additional scripts needed.** 🎉
 
-```bash
-python run_web_app.py
-```
+### 📝 Using the Application
 
-#### Option 2: Direct Streamlit command
+1. **Choose Input Method**: 
+   - **Paste Text**: Copy and paste resume content directly
+   - **Upload File**: Drag & drop PDF or text files
 
-```bash
-streamlit run src/web_app.py
-```
+2. **Get Results**: 
+   - Click "🚀 Classify Resume" 
+   - View predicted category and confidence score
+   - See processing statistics and text preview
 
-The application will automatically:
+3. **Understand Results**:
+   - **High Confidence** (>70%): Very reliable prediction
+   - **Medium Confidence** (50-70%): Good prediction
+   - **Low Confidence** (<50%): Less certain, review manually
 
-- Validate configuration settings
-- Create necessary directories
-- Check for trained models
-- Start the web interface at `http://localhost:8501`
+## ⚙️ Technical Details
 
-### Using the Web Interface
+The application uses:
 
-1. **Upload Files**: Drag and drop PDF resumes or use the file browser
-2. **Configure Options**: Choose file organization and export settings
-3. **Start Processing**: Click "Start Classification" to begin
-4. **View Results**: Check the "Results & Analytics" tab for detailed results
-5. **Export Data**: Download CSV reports or summary documents
-6. **Organize Files**: Automatically sort resumes by predicted category
-
-## 🔧 Configuration
-
-The system is highly configurable through `config.py`. Key settings include:
-
-- **TF-IDF Parameters**: Max features (5000), n-gram range (1,2)
-- **ML Models**: KNN, Logistic Regression, Random Forest, SVM, Naive Bayes
-- **Performance Requirements**: 90% accuracy, <5s per resume processing
-- **File Handling**: Supported formats, batch sizes, memory limits
+- **Algorithm**: Random Forest Classifier
+- **Features**: 5,000 TF-IDF features (unigrams + bigrams)
+- **Text Processing**: NLTK for preprocessing and tokenization
+- **PDF Support**: PyPDF2 for text extraction
+- **Interface**: Streamlit for the web UI
+- **Model Storage**: Joblib for model persistence
 
 ## 🧪 Testing
 
